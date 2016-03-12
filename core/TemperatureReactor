@@ -1,0 +1,20 @@
+from rx import Observable
+from rx.subjects import Subject
+
+
+class TemperatureReactor:
+    def __init__(self, eventbus: Subject):
+        self.eventbus = eventbus
+        self._runTimer = Observable.timer(0, 1000)
+        self.started = False
+        self._runSubscription = None
+        # also init nodes from permanent storage
+        # or pass responsibility to node itself
+        # it has history, settings, and can react on current changes
+
+    def start(self):
+        self._runSubscription = self._runTimer.subscribe(self._run)
+        self.started = True
+
+    def _run(self):
+        pass
