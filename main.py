@@ -1,7 +1,7 @@
 # from core.model import Node, Room
 import asyncio
 
-from coroutines import Coro
+from coroutines import MainCoroutine
 
 
 # def create_and_run_model():
@@ -9,13 +9,13 @@ from coroutines import Coro
 #              Room(Node("312"), "obyvak")
 #              ]
 
-async def play_with_coroutines():
-    coroutine = Coro()
+async def start_main_coroutine():
+    coroutine = MainCoroutine()
 
     await coroutine.run()
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(play_with_coroutines())
+    loop.run_until_complete(start_main_coroutine())
     loop.close()
 
